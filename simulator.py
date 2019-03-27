@@ -236,6 +236,9 @@ def startSimulador():
    
     now = now.replace(":","-")
     #Exportar resultados para um Excel
+    path = 'HistoricoResultados'
+    if not os.path.exists(path):
+        os.mkdir(path)
     writer = pd.ExcelWriter('HistoricoResultados/Resultados '+now+'.xlsx', engine='xlsxwriter')
     df.to_excel(writer, sheet_name='Sheet1')    # Close the Pandas Excel writer and output the Excel file.
     writer.save()
